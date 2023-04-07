@@ -1,0 +1,28 @@
+{
+    "themes": [
+        {
+            "id": "default",
+            "source": {
+                "palette": {
+                    "primary": {
+                        "main": "#f5cd00",
+                        "light": "#f5cd00",
+                        "dark": "#f5cd00"
+                    },
+                    "secondary" : {
+                        "main": "#606060",
+                        "light": "#606060",
+                        "dark": "#606060"
+                    },
+                    "disabled" : {
+                        "main": "#ffffff",
+                        "light": "#ffffff",
+                        "dark": "#000000"
+                    }
+                }
+            }
+        }
+    ],
+    "defaultThemeID": "default",
+    "defaultIsDarkMode": false
+}

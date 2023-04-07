@@ -1,0 +1,4 @@
+flask==2.2.3
+flask-restx==1.1.0
+waitress==2.1.2
+#git+https://github.com/nadegelemperiere/spike-mock.git

@@ -1,0 +1,162 @@
+{
+    "name": "spike-mock",
+    "version": "v1.0.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@fontsource/roboto": "^4.5.8",
+        "@fontsource/roboto-condensed": "^4.5.9",
+        "@mui/icons-material": "^5.11.11",
+        "@mui/material": "^5.11.15",
+        "@mui/system": "^5.11.15",
+        "@testing-library/dom": "^9.2.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^14.0.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "notistack": "^3.0.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-intl": "^6.3.2",
+        "react-ios-pwa-prompt": "^1.8.4",
+        "react-router-dom": "^6.10.0",
+        "react-scripts": "5.0.1",
+        "serve": "^14.2.0",
+        "styled-components": "^5.3.9"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "test": "react-scripts test --coverage --env=jsdom",
+        "build": "react-scripts build",
+        "eject": "react-scripts eject"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nadegelemperiere/spike-mock-server.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nadegelemperiere/spike-mock-server/issues"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ],
+        "env": {
+            "browser": true,
+            "es6": true
+        },
+        "globals": {
+            "Atomics": "readonly",
+            "SharedArrayBuffer": "readonly"
+        },
+        "parserOptions": {
+            "ecmaFeatures": {
+                "jsx": true,
+                "modules": true
+            },
+            "ecmaVersion": 2018,
+            "sourceType": "module"
+        },
+        "plugins": [
+            "react"
+        ],
+        "rules": {
+            "react/jsx-indent": [
+                1,
+                4,
+                {
+                    "indentLogicalExpressions": true
+                }
+            ],
+            "react/jsx-indent-props": [
+                1,
+                4
+            ],
+            "react/jsx-filename-extension": [
+                1,
+                {
+                    "extensions": [
+                        ".js",
+                        ".jsx"
+                    ]
+                }
+            ],
+            "react/forbid-prop-types": [
+                0,
+                {
+                    "forbid": [
+                        "any"
+                    ]
+                }
+            ],
+            "react/prop-types": 0,
+            "react/destructuring-assignment": 0,
+            "react/sort-comp": 0,
+            "react/no-did-update-set-state": 0,
+            "react/jsx-boolean-value": 0,
+            "import/prefer-default-export": 1,
+            "import/no-extraneous-dependencies": 1,
+            "import/no-unresolved": 1,
+            "prefer-template": 1,
+            "prefer-const": 1,
+            "no-unused-vars": 1,
+            "indent": [
+                1,
+                4
+            ],
+            "no-mixed-spaces-and-tabs": 1,
+            "operator-linebreak": [
+                2,
+                "after"
+            ],
+            "comma-dangle": [
+                2,
+                {
+                    "arrays": "never",
+                    "objects": "always-multiline",
+                    "imports": "never",
+                    "exports": "never",
+                    "functions": "never"
+                }
+            ],
+            "object-curly-newline": [
+                2,
+                {
+                    "ObjectExpression": {
+                        "multiline": true
+                    },
+                    "ObjectPattern": {
+                        "multiline": true
+                    },
+                    "ImportDeclaration": "never",
+                    "ExportDeclaration": "never"
+                }
+            ],
+            "padded-blocks": [
+                1,
+                "always",
+                {
+                    "allowSingleLineBlocks": true
+                }
+            ]
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "eslint": "^8.37.0"
+    }
+}

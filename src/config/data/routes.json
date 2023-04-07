@@ -1,0 +1,14 @@
+[
+    {
+        "path": "/",
+        "element": "Home"
+    },
+    {
+        "path": "*",
+        "element": "NotFound"
+    },
+    {
+        "path": "/loading",
+        "element": "Loading"
+    }
+]
