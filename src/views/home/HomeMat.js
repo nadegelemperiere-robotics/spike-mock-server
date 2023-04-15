@@ -16,9 +16,11 @@ import React from 'react';
 /* Material UI includes */
 import { Box } from '@mui/material';
 
+/* Website includes */
+import { useMat } from '../../providers';
+
 /* Local includes */
 import { HomeGridItem } from './HomeContainers';
-import { useMat } from '../../providers';
 
 function HomeMat() {
 
@@ -29,8 +31,8 @@ function HomeMat() {
     /* ----------- Define HTML --------- */
     return (
 
-        <HomeGridItem item xs={12} sm={8} md={8} style={{ bottom: '0px', position: 'relative' }}>
-            <Box component="img" alt="The mat image." src={mat}style={{width: '100%'}}/>
+        <HomeGridItem item xs={12} sm={12} md={8} style={{ bottom: '0px', position: 'relative' }}>
+            <Box component="img" alt="The mat image." src={mat} style={{width: '100%'}}/>
         </HomeGridItem>
     );
 

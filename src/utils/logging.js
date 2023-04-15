@@ -10,7 +10,7 @@
 # Latest revision: 02 february 2022
 # -------------------------------------------------------*/
 
-const showComponents = ['CookiesUtils', 'CookiesProvider', 'Cookies', 'reportWebVitals', 'App', 'Layout'];
+const showComponents = ['Home', 'HomeCode', 'App', 'Layout', 'HomeRobot', 'RobotProvider', 'MatProvider'];
 /*const showComponents = ['all'];*/
 
 /* eslint-disable no-console */

@@ -16,3 +16,5 @@ export { withOnline, default as OnlineProvider, useOnline } from './Online';
 export { withTheme, default as AppThemeProvider, useTheme as useAppTheme } from './Theme';
 export { withRobot, default as RobotProvider, useRobot } from './Robot';
 export { withMat, default as MatProvider, useMat } from './Mat';
+export { withCode, default as CodeProvider, useCode } from './Code';
+

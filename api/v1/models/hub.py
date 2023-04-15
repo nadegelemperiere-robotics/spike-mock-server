@@ -33,12 +33,14 @@ def marshall_hub(obj):
         for i_line in range(0,5) :
             result['lightmatrix'].append([])
             for i_column in range(0,5) :
-                result['lightmatrix'][i_line].append(obj['lightmatrix'][i_line * 5 + i_column])
+                value = False
+                if obj['lightmatrix'][i_line * 5 + i_column] != 0: value = True
+                result['lightmatrix'][i_line].append(value)
 
     if 'buttons' in obj :
         result['buttons'] = []
-        for side, button in obj['buttons'] :
-            result['buttons'].append(marshall_button(side, button))
+        for button in obj['buttons'] :
+            result['buttons'].append(marshall_button(button['side'], button['pressed']))
 
     if 'speaker' in obj :
         result['speaker'] = marshall_speaker(obj['speaker'])

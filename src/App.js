@@ -29,8 +29,6 @@ function App() {
     /* --------- Gather inputs --------- */
     const componentName = 'App';
 
-    console.log(Config)
-
     /* -- Manage body settings - */
     useEffect(() => {
 

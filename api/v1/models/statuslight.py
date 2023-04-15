@@ -16,7 +16,7 @@ from v1.routes.common import api
 
 statuslight = api.model('StatusLight', {
     'color': fields.String(required=True, description='Light color'),
-    'on': fields.Boolean(readOnly=True, description='Button pressed status')
+    'on': fields.Boolean(readOnly=True, description='Status light on status')
 })
 
 def marshall_statuslight(obj):

@@ -14,8 +14,8 @@
 import React from 'react';
 
 /* Material includes */
-import { Typography, Grid, Avatar, Link, Divider } from '@mui/material';
-import { LocationOn as LocationOnIcon, Email as EmailIcon, LinkedIn as LinkedInIcon, GitHub as GitHubIcon } from '@mui/icons-material';
+import { Grid, Divider, Link, Avatar } from '@mui/material';
+import { GitHub as GitHubIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 
 /* Website includes */
@@ -42,6 +42,9 @@ function FooterDesktop() {
                     <Grid item xs={7}  >
                     </Grid>
                     <Grid container item xs={3} style={{ paddingTop:'5px' }} >
+                        <Link href="https://github.com/nadegelemperiere/spike-mock-server/" target="_blank">
+                            <Avatar style={{ backgroundColor:'rgba(255,255,255,0)' }}><GitHubIcon style={{ color:theme.palette.primary.main }}/></Avatar>
+                        </Link>
                     </Grid>
                 </Grid>
             </Grid>

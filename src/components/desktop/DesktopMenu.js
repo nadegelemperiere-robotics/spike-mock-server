@@ -27,8 +27,6 @@ function DesktopMenu(props) {
     /* --------- Gather inputs --------- */
     const { top = '95px', left = '20px', height = '20px', width = '100%' } = props || {};
 
-    console.log(width)
-
     /* ----------- Define HTML --------- */
     return (
         <DesktopBar width={width} height={height} top={top} left={left}>

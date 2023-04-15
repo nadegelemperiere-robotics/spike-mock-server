@@ -29,6 +29,7 @@ from v1.routes.common       import api as apiv1, initialize as initialize_v1, bl
 from client.routes.common   import initialize as initialize_client, blueprint as blueprintclient
 from v1.routes.robot        import ns as robot_namespace
 from v1.routes.mat          import ns as mat_namespace
+from v1.routes.command      import ns as command_namespace
 
 
 logg_conf_path = path.normpath(path.join(path.dirname(__file__), '../conf/logging.conf'))
@@ -43,12 +44,12 @@ class Server:
 
     def __init__(self):
         """ Constructor for server """
-        self.__app = Flask('/')
+        self.__app = Flask('spikeapp')
         self.__scenario = Scenario()
 
     def __del__(self):
         """ Destructor for server """
-        self.__scenario.reset()
+        self.__scenario.reinitialize()
 
     def configure(self, api_port, api_host='localhost', is_test=False):
         """ App option definition function """
@@ -75,6 +76,7 @@ class Server:
         self.__app.register_blueprint(blueprintv1)
         apiv1.add_namespace(robot_namespace)
         apiv1.add_namespace(mat_namespace)
+        apiv1.add_namespace(command_namespace)
 
     def start(self, port):
         """ Server starting function """
@@ -84,7 +86,7 @@ class Server:
 
         # Serve client
         self.s_logger.info('Starting server at http://%s/', self.__app.config['SERVER_NAME'])
-        serve(self.__app, listen='*:' + port)
+        serve(self.__app, listen='*:' + port, threads=10)
 
 
 @group()

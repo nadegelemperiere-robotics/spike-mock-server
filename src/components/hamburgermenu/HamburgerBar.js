@@ -14,12 +14,10 @@
 import React from 'react';
 
 /* Material UI includes */
-import { Stack, Switch } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 /* Website includes */
 import { useMenu } from '../../providers';
-import logMessage from '../../utils/logging';
 
 /* Local includes */
 import HamburgerLogo from './HamburgerLogo';
@@ -32,7 +30,7 @@ function HamburgerBar(props) {
     const { height = '115px' } = props;
     const { isSliding } = useMenu();
     const theme = useTheme();
-    const componentName = 'HamburgerBar';
+    //const componentName = 'HamburgerBar';
 
     /* ------ Manage switch change ----- */
 

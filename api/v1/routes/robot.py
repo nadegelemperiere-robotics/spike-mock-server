@@ -37,7 +37,7 @@ class ComponentCollection(Resource):
 
 
 @ns.route('/hub')
-class ComponentCollection(Resource):
+class HubCollection(Resource):
     """ /hub route definition class """
 
     @api.marshal_with(hub)

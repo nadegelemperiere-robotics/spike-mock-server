@@ -17,68 +17,70 @@ import React, { useReducer, useEffect, useMemo } from 'react';
 import logMessage from '../../utils/logging';
 
 /* Local includes */
-import RobotContext from './Context';
-import { setHub, setComponents } from './store/actions';
+import CodeContext from './Context';
+import { setCode, setError } from './store/actions';
 import reducer from './store/reducer';
 
 function Provider(props) {
 
     /* --------- Gather inputs --------- */
-    const { period, children, persistKey = 'robot' } = props;
-    const componentName = 'RobotProvider';
+    const { period, children, persistKey = 'code' } = props;
+    const componentName = 'CodeProvider';
 
     const savedState = JSON.parse(localStorage.getItem(persistKey));
-    const [robotState, dispatch] = useReducer(reducer, {
-        components: [],
-        hub: [],
+    const [codeState, dispatch] = useReducer(reducer, {
+        code: "",
+        error: "",
         ...savedState,
     });
 
-    /* ----- Manage robot characteristics retrieval ------ */
+    /* ----- Manage console retrieval ------ */
     useEffect(() => {
 
-        logMessage(componentName, 'useEffect[robotState, period] --- BEGIN');
+        logMessage(componentName, 'useEffect[codeState, period] --- BEGIN');
         /* eslint-disable padded-blocks, brace-style */
         function getStatus() {
 
-            fetch('v1/robot/component')
+            fetch('v1/command/console')
                 .then((response) => response.json())
-                .then((data) => dispatch(setComponents(data !== null ? data : robotState.components)))
-                .catch((err) => {
-                    logMessage(componentName, err.message);
-                });
-
-            fetch('v1/robot/hub')
-                .then((response) => response.json())
-                .then((data) => dispatch(setHub(data !== null ? data : robotState.hub)))
+                .then((data) => dispatch(setError(data.console !== null ? data.console : codeState.error)))
                 .catch((err) => {
                     logMessage(componentName, err.message);
                 });
         }
         const interval = setInterval(() => getStatus(), period)
-        logMessage(componentName, 'useEffect[robotState, period] --- END');
+        logMessage(componentName, 'useEffect[codeState, period] --- END');
         return () => {
             clearInterval(interval);
         }
         /* eslint-disable padded-blocks, brace-style */
 
-    }, [robotState, period]);
+    }, [codeState, period]);
 
     useEffect(() => {
 
-        logMessage(componentName, 'useEffect[componentsState, persistKey] --- BEGIN');
-        localStorage.setItem(persistKey, JSON.stringify(robotState));
-        logMessage(componentName, 'useEffect[componentsState, persistKey] --- END');
+        logMessage(componentName, 'useEffect[codeState, persistKey] --- BEGIN');
+        localStorage.setItem(persistKey, JSON.stringify(codeState));
+        logMessage(componentName, 'useEffect[codeState, persistKey] --- END');
 
-    }, [robotState, persistKey]);
+    }, [codeState, persistKey]);
 
-    const memorizedValue = useMemo(() => ({ components:robotState.components, hub:robotState.hub }), [robotState]);
+    const memorizedValue = useMemo(() => ({
+        changeCode(code)
+        {
+            logMessage(componentName, 'changeCode --- BEGIN');
+            dispatch(setCode(code !== null ? code : codeState.code))
+            logMessage(componentName, 'changeCode --- END');
+        },
+        code: codeState.code,
+        error: codeState.error,
+    }), [codeState]);
 
     /* ----------- Define HTML --------- */
     return (
-        <RobotContext.Provider value={memorizedValue}>
+        <CodeContext.Provider value={memorizedValue}>
             {children}
-        </RobotContext.Provider>
+        </CodeContext.Provider>
     );
 
 }

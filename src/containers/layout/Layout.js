@@ -15,7 +15,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 /* Website includes */
-import { OnlineProvider, MatProvider, RobotProvider, useConfig, useMenu } from '../../providers';
+import { OnlineProvider, MatProvider, RobotProvider, CodeProvider, useConfig, useMenu } from '../../providers';
 import { Mobile, Desktop } from '../../components';
 import logMessage from '../../utils/logging';
 import Loading from '../../views/loading/Loading';
@@ -73,14 +73,18 @@ function Layout() {
 
     /* --------- Gather inputs --------- */
     const { appConfig } = useConfig();
+    const { scenario } = appConfig || {};
+    const { period } = scenario || {};
     //const componentName = 'Layout';
 
     /* ----------- Define HTML --------- */
     return (
         <OnlineProvider>
-            <RobotProvider>
-                <MatProvider>
-                    <LayoutContent appConfig={appConfig} />
+            <RobotProvider period={period}>
+                <MatProvider period={period}>
+                    <CodeProvider period={period}>
+                        <LayoutContent appConfig={appConfig} />
+                    </CodeProvider>
                 </MatProvider>
             </RobotProvider>
         </OnlineProvider>

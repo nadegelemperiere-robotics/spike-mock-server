@@ -16,7 +16,8 @@ from v1.routes.common import api
 
 speaker = api.model('Speaker', {
     'note': fields.Float(required=True, description='Speaker note'),
-    'volume': fields.Integer(readOnly=True, description='Speaker volume')
+    'volume': fields.Integer(readOnly=True, description='Speaker volume'),
+    'beeping': fields.Boolean(readOnly=True, description='Speaker on status')
 })
 
 def marshall_speaker(obj):
@@ -26,5 +27,6 @@ def marshall_speaker(obj):
 
     result['note'] = obj['note']
     result['volume'] = obj['volume']
+    result['beeping'] = obj['beeping']
 
     return result

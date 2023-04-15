@@ -14,7 +14,7 @@
 import React from 'react';
 
 /* Website includes */
-import { useConfig, useMenu } from '../../providers';
+import { useConfig } from '../../providers';
 
 /* Local includes */
 import MobileFrame from './MobileFrame';
@@ -24,7 +24,6 @@ import MobileMenu from './MobileMenu';
 function Mobile() {
 
     /* --------- Gather inputs --------- */
-    const { isMenuOpen } = useMenu();
     const { appConfig } = useConfig();
     const { menu } = appConfig || {};
     const { height = '115px' } = menu || {};
