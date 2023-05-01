@@ -1,7 +1,5 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Hamburger bar for mobile navigation
@@ -15,6 +13,7 @@ import React from 'react';
 
 /* Material UI includes */
 import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 /* Website includes */
 import { useMenu } from '../../providers';
@@ -22,7 +21,7 @@ import { useMenu } from '../../providers';
 /* Local includes */
 import HamburgerLogo from './HamburgerLogo';
 import HamburgerStack from './HamburgerStack';
-import HamburgerTypography from './HamburgerTypography';
+import HamburgerIcon from './HamburgerIcon';
 
 function HamburgerBar(props) {
 
@@ -30,9 +29,7 @@ function HamburgerBar(props) {
     const { height = '115px' } = props;
     const { isSliding } = useMenu();
     const theme = useTheme();
-    //const componentName = 'HamburgerBar';
-
-    /* ------ Manage switch change ----- */
+    /* const componentName = 'HamburgerBar'; */
 
     /* -------- Defining theme --------- */
     let stackcolor = theme.palette.primary.main;
@@ -42,7 +39,10 @@ function HamburgerBar(props) {
     return (
         <HamburgerStack placeholder="hamburgerbar" id="hamburgerbar" direction="row" alignItems="center" justifyContent="space-between" color={stackcolor} padding="0px" height={height}>
             <HamburgerLogo padding="20px" height={height} reference={isSliding ? 'logoWhite' : 'logo'} />
-            <HamburgerTypography col={stackcolor} style={{width: '100%', textAlign: 'center'}}>SPIKE MOCK CLIENT</HamburgerTypography>
+            <Box style={{ width: '100%', align: 'center'}}>
+                <HamburgerIcon width="30px" height="30px" color={stackcolor} />
+            </Box>
+
         </HamburgerStack>
     );
 

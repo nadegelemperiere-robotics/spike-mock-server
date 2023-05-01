@@ -1,10 +1,8 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Responsive image handling srcset, webp and fallbacks
+# Footer component for desktop clients
 # -------------------------------------------------------
 # Nadège LEMPERIERE, @24 february 2022
 # Latest revision: 24 february 2022

@@ -1,7 +1,5 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Mobile menu structure
@@ -14,7 +12,8 @@
 import React from 'react';
 
 /* Website includes */
-import { useConfig } from '../../providers';
+import { useConfig, useMenu } from '../../providers';
+import { HamburgerMenu } from '../../components';
 
 /* Local includes */
 import MobileFrame from './MobileFrame';
@@ -24,6 +23,7 @@ import MobileMenu from './MobileMenu';
 function Mobile() {
 
     /* --------- Gather inputs --------- */
+    const { isMenuOpen } = useMenu();
     const { appConfig } = useConfig();
     const { menu } = appConfig || {};
     const { height = '115px' } = menu || {};
@@ -38,6 +38,7 @@ function Mobile() {
         <React.Fragment key="mobilenav">
             <MobileFrame />
             <MobileMenu top="0px" left="0px" width="100vw" height={height} />
+            {(isMenuOpen) && (<HamburgerMenu />)}
             <MobileContent top="0px" left="0px" width="100vw" height="100vh" />
         </React.Fragment>
     );

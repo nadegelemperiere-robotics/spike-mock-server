@@ -1,28 +1,27 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Mat provider
+# Scenario provider exports
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
+
 
 /* React includes */
 import { useContext } from 'react';
 
 /* Local includes */
-import MatContext from './Context';
+import ScenarioContext from './Context';
 import Provider from './Provider';
-import withMat from './with';
+import withScenario from './with';
 
 /* eslint-disable padded-blocks */
-function useMat() {
-    return useContext(MatContext);
+function useScenario() {
+    return useContext(ScenarioContext);
 }
 /* eslint-enable padded-blocks */
 
-export { withMat, useMat };
+export { withScenario, useScenario};
 export default Provider;

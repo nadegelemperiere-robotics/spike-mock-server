@@ -1,7 +1,7 @@
 /* -------------------------------------------------------
 # TECHNOGIX
 # -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+# Copyright (c) [2023] Technogix SARL
 # All rights reserved
 # -------------------------------------------------------
 # Hamburger bar for mobile navigation testing
@@ -22,7 +22,6 @@ import { ConfigProvider } from '../../providers';
 
 /* Mocks includes */
 import { MockProvider as MockMenuProvider, mockUseMenu } from '../../providers/Menu/Mock.js';
-import { MockProvider as MockLocaleProvider, mockUseLocale } from '../../providers/Locale/Mock.js';
 
 /* Tests includes */
 import { screen } from '@testing-library/react';
@@ -30,7 +29,6 @@ import { screen } from '@testing-library/react';
 jest.mock('../../providers', () => ({
     ...jest.requireActual('../../providers'),
     useMenu: (() => { return mockUseMenu(); }),
-    useLocale: (() => { return mockUseLocale(); }),
 }));
 
 test('Should change bar theme when user is sliding', () => {
@@ -41,11 +39,9 @@ test('Should change bar theme when user is sliding', () => {
         ReactDOM.render(
             <React.StrictMode>
                 <ConfigProvider appConfig={Config}>
-                    <MockLocaleProvider>
-                        <MockMenuProvider isSliding={true}>
-                            <HamburgerBar />
-                        </MockMenuProvider>
-                    </MockLocaleProvider>
+                    <MockMenuProvider isSliding={true}>
+                        <HamburgerBar />
+                    </MockMenuProvider>
                 </ConfigProvider>
             </React.StrictMode>,
             document.getElementById('root')
@@ -53,7 +49,7 @@ test('Should change bar theme when user is sliding', () => {
 
     })
     /* eslint-disable testing-library/no-unnecessary-act, testing-library/no-node-access */
-    
+
     expect(screen.getByPlaceholderText('hamburgerbar')).toBeTruthy();
     /*expect(screen.getByPlaceholderText('hamburgerbar')).toHaveStyle('background-color: rgb(35, 168, 212);');*/
 

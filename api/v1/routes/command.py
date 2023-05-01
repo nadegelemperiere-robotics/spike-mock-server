@@ -14,10 +14,10 @@ from flask_restx  import Resource
 
 # Project includes
 from v1.routes.common       import api
-from v1.models.command      import code, console
+from v1.models.command      import code, console, configuration
 from v1.controllers.command import CommandController
 
-log = getLogger(__name__)
+log = getLogger("spike-mock-server.v1.command")
 
 ns = api.namespace('command', description='Operations related to code')
 
@@ -31,8 +31,8 @@ class StartCollection(Resource):
     def post(self):
         """ Creates a new ground truth . """
         log.info('Posting code')
-        code = request.json['code']
-        CommandController.process_code(str(code))
+        cod = request.json['code']
+        CommandController.process_code(str(cod))
 
 @ns.route('/stop')
 class StopCollection(Resource):
@@ -42,8 +42,28 @@ class StopCollection(Resource):
     @api.expect(code)
     @api.marshal_with(code)
     def post(self):
+        """ Stopping code execution """
         log.info('Stopping code')
-        pass
+
+@ns.route('/configure')
+class ConfigureCollection(Resource):
+    """ /configure route definition class """
+
+    @api.response(201, 'Configuration successfully changed.')
+    @api.expect(configuration)
+    @api.marshal_with(configuration)
+    def post(self):
+        """ Stopping code execution """
+        log.info('Configuring scenario')
+        CommandController.process_configuration(
+            request.json['time'],request.json['dynamics'],request.json['mat'],request.json['robot'])
+
+    @api.marshal_with(configuration)
+    def get(self):
+        """ Retrieving error stack. """
+        log.debug('Retrieving current configuration')
+        current_configuration = CommandController.get_configuration()
+        return current_configuration
 
 @ns.route('/console')
 class ConsoleCollection(Resource):
@@ -51,29 +71,27 @@ class ConsoleCollection(Resource):
 
     @api.marshal_with(console)
     def get(self):
-        """ Returns list of directories. """
-        log.info('Retrieving console errors')
-        console = CommandController.get_status()
-        return console
+        """ Retrieving error stack. """
+        log.debug('Retrieving console errors')
+        error_stack = CommandController.get_status()
+        return error_stack
 
 @ns.route('/button/push/<string:side>')
-class ConsoleCollection(Resource):
+class ButtonPushCollection(Resource):
     """ /button/push route definition class """
 
     @api.response(201, 'Button successfully pressed.')
     def post(self, side):
         """ Press button on a side. """
         log.info('Pushing button %s',side)
-        console = CommandController.press_button(side)
-        return console
+        CommandController.press_button(side)
 
 @ns.route('/button/release/<string:side>')
-class ConsoleCollection(Resource):
+class ButtonReleaseCollection(Resource):
     """ /button/release route definition class """
 
     @api.response(201, 'Button successfully released.')
     def post(self, side):
-        """ Press button on a side. """
+        """ Release button on a side. """
         log.info('Releasing button %s',side)
-        console = CommandController.release_button(side)
-        return console
+        CommandController.release_button(side)

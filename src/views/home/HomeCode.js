@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# H"What I Do" part of Home page
+# Home code container
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2021
-# Latest revision: 02 february 2021
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -56,6 +54,7 @@ function HomeCode() {
             },
             body: JSON.stringify({code:code}),
         })
+            .catch((err) => { console.log(err.message); });
         logMessage(componentName, 'handlePlayClick --- END');
 
     };
@@ -69,9 +68,7 @@ function HomeCode() {
             },
             body: "",
         })
-            .catch((err) => {
-                logMessage(componentName, err.message);
-            });
+            .catch((err) => { console.log(err.message); });
     }
 
     useEffect(() => {

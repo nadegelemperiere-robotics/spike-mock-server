@@ -1,10 +1,8 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Menu configuration loading
+# Scenario configuration loading
 # -------------------------------------------------------
 # Nadège LEMPERIERE, @03 february 2021
 # Latest revision: 03 february 2021
@@ -14,6 +12,5 @@
 import ScenarioConfig from './data/scenario.json';
 
 const Scenario = ScenarioConfig;
-
 
 export default Scenario;

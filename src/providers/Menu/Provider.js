@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Menu provider
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -21,7 +19,7 @@ import logMessage from '../../utils/logging';
 
 /* Local includes */
 import MenuContext from './Context';
-import { setIsSliding } from './store/actions';
+import { setIsSliding, setIsItemSelected, setIsMenuOpen } from './store/actions';
 import reducer from './store/reducer';
 
 function isWebpSupported() {
@@ -40,7 +38,9 @@ function isWebpSupported() {
 function Provider(props) {
 
     /* --------- Gather inputs --------- */
-    const { children, persistKey = 'menu' } = props;
+    const { appConfig, children, persistKey = 'menu' } = props;
+    const { menu } = appConfig || {};
+    const { initialMenuOpen, initialItemSelected, content, icons } = menu;
     const componentName = 'MenuProvider';
 
     /* ----- Create provider state ----- */
@@ -48,25 +48,44 @@ function Provider(props) {
     const supportsWebp = isWebpSupported();
     const savedState = JSON.parse(localStorage.getItem(persistKey));
     const [menuStore, dispatch] = useReducer(reducer, {
+        isMenuOpen: initialMenuOpen,
+        isItemSelected: initialItemSelected,
         isSliding: false,
         ...savedState,
     });
 
     /* ----- Define provider values ---- */
     const memorizedValue = {
+        toggleItem(value, newValue = true) {
+
+            logMessage(componentName, `toggleItem( ${value} ) --- BEGIN`);
+            const items = {};
+            const array = Object.entries(menuStore.isItemSelected);
+            for (let i = 0; i < array.length; i += 1) { items[array[i][0]] = false; }
+            items[value] = newValue;
+            dispatch(setIsItemSelected(items));
+            logMessage(componentName, `toggleItem( ${value} ) --- END`);
+
+        },
         toggleThis(value, newValue = null) {
 
             logMessage(componentName, `toggleThis( ${value} ) --- BEGIN`);
             /* eslint-disable padded-blocks, brace-style */
-            if (value === 'isSliding') {
+            if (value === 'isMenuOpen') {
+                dispatch(
+                    setIsMenuOpen(newValue !== null ? newValue : !menuStore.isMenuOpen)
+                );
+            }
+            else if (value === 'isSliding') {
                 dispatch(setIsSliding(newValue !== null ? newValue : !menuStore.isSliding));
             }
             /* eslint-enable padded-blocks, brace-style */
             logMessage(componentName, `toggleThis( ${value} ) --- END`);
 
         },
+        isMenuOpen: menuStore.isMenuOpen,
+        isItemSelected: menuStore.isItemSelected,
         isSliding: menuStore.isSliding,
-
     }
 
     useEffect(() => {
@@ -80,6 +99,8 @@ function Provider(props) {
     /* ----------- Define HTML --------- */
     return (
         <MenuContext.Provider value={{
+            content,
+            icons,
             isDesktop,
             supportsWebp,
             ...memorizedValue,

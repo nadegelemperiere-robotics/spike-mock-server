@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# "Who Am I" part of Home page
+# Home mat container
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2021
-# Latest revision: 02 february 2021
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -17,22 +15,30 @@ import React from 'react';
 import { Box } from '@mui/material';
 
 /* Website includes */
-import { useMat } from '../../providers';
+import { useRobot, useScenario, useConfig } from '../../providers';
 
 /* Local includes */
 import { HomeGridItem } from './HomeContainers';
+import HomePosition from './HomePosition';
 
 function HomeMat() {
 
     /* --------- Gather inputs --------- */
     //const componentName = 'HomeMat';
-    const { mat } = useMat();
+    const { position } = useRobot();
+    const { mat } = useScenario();
+    const { appConfig } = useConfig();
+    const { scenario } = appConfig || {};
+    const { mats = [] } = scenario || {};
 
     /* ----------- Define HTML --------- */
     return (
 
         <HomeGridItem item xs={12} sm={12} md={8} style={{ bottom: '0px', position: 'relative' }}>
-            <Box component="img" alt="The mat image." src={mat} style={{width: '100%'}}/>
+            <Box style={{width: '100%', position: 'relative'}}>
+                {(mat >= 0 && 'image' in mats[mat]) && (<Box component="img" alt="The mat image." src={mats[mat].image} style={{width: '100%'}}/>)}
+                {(mat >= 0 && 'image' in mats[mat] && Object.keys(position).length !== 0) && (<HomePosition position={position} />)}
+            </Box>
         </HomeGridItem>
     );
 

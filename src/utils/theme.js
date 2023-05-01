@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Theme management utils
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @03 february 2021
-# Latest revision: 03 february 2021
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* Material UI includes */
@@ -31,11 +29,16 @@ const getThemeSource = (id, ts, isDarkMode) => {
                     },
                     direction: 'ltr',
                     typography: {
+                        title: {
+                            fontSize: '3rem',
+                            textTransform: 'uppercase',
+                            marginBottom: '15px',
+                            marginTop: '10px',
+                        },
                         h1: {
                             fontSize: '2.5rem',
                             color: palette.primary.main,
                             textTransform: 'uppercase',
-                            fontFamily: 'Roboto Condensed',
                             position: 'relative',
                             marginBottom: '15px',
                             marginTop: '10px',
@@ -72,7 +75,6 @@ const getThemeSource = (id, ts, isDarkMode) => {
                             fontSize: '2rem',
                             color: 'black',
                             textTransform: 'uppercase',
-                            fontFamily: 'Roboto Condensed',
                             position: 'relative',
                             marginBottom: '10px',
                             marginTop: '10px',
@@ -119,7 +121,6 @@ const getThemeSource = (id, ts, isDarkMode) => {
                             fontSize: '14px',
                             color: 'black',
                             textTransform: 'uppercase',
-                            fontFamily: 'Roboto Condensed',
                             position: 'relative',
                             marginBottom: '10px',
                             marginTop: '10px',
@@ -140,14 +141,12 @@ const getThemeSource = (id, ts, isDarkMode) => {
                         body1: {
                             fontSize: '14px',
                             color: 'black',
-                            fontFamily: 'Roboto',
                             position: 'relative',
                             textAlign: 'justify',
                         },
                         body2: {
                             fontSize: '14px',
                             color: 'black',
-                            fontFamily: 'Roboto',
                             position: 'relative',
                             textAlign: 'justify',
                         },

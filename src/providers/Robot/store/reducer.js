@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Menu provider
+# Robot provider reducer
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* Local includes */
@@ -24,6 +22,8 @@ export default function reducer(state = {}, action) {
         return { ...state, hub: payload };
     case types.SET_COMPONENTS:
         return { ...state, components: payload };
+    case types.SET_POSITION:
+        return { ...state, position: payload };
     default:
         return state;
 

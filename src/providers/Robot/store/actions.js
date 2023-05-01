@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Menu provider
+# Robot provider reducer actions
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* Local includes */
@@ -20,6 +18,10 @@ export function setHub(content) {
 
 export function setComponents(content) {
     return { type: types.SET_COMPONENTS, payload: content };
+}
+
+export function setPosition(content) {
+    return { type: types.SET_POSITION, payload: content };
 }
 
 /* eslint-enable padded-blocks */

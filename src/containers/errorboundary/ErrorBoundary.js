@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Error boundary manager
+# Error Boundary Manager
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -28,8 +26,8 @@ class ErrorBoundary extends Component {
     componentDidCatch(error, errorInfo) {
 
         // You can also log the error to an error reporting service
-        logMessage(error, 'error');
-        logMessage(errorInfo, 'error');
+        logMessage('Error', error);
+        logMessage('Error', errorInfo);
         this.setState({ error, errorInfo });
 
     }

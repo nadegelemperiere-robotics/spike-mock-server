@@ -16,4 +16,4 @@ scriptpath=`dirname $script`
 docker run -it --rm \
             --volume $scriptpath/..:/package/ \
             nadegelemperiere/fll-test-docker:v2.2.2 \
-            pylint --rcfile=/package/.pylintrc /package/spike
+            pylint --rcfile=/package/.pylintrc /package/api

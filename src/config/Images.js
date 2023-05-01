@@ -1,7 +1,5 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Responsive images preloading
@@ -228,6 +226,37 @@ const Images = {
             },
         },
         default: require('../assets/distance.png'),
+    },
+    wheel: {
+        webp: {
+            small: {
+                img: require('../assets/wheel.webp'),
+                width: '320w',
+            },
+            medium: {
+                img: require('../assets/wheel.webp'),
+                width: '768w',
+            },
+            large: {
+                img: require('../assets/wheel.webp'),
+                width: '2500w',
+            },
+        },
+        jpg: {
+            small: {
+                img: require('../assets/wheel.png'),
+                width: '320w',
+            },
+            medium: {
+                img: require('../assets/wheel.png'),
+                width: '768w',
+            },
+            large: {
+                img: require('../assets/wheel.png'),
+                width: '2500w',
+            },
+        },
+        default: require('../assets/wheel.png'),
     },
 };
 /* eslint-enable global-require */

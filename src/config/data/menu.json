@@ -2,5 +2,17 @@
     "height": "84px",
     "margin": "20px",
     "maxWidth": "1100px",
-    "hamburgerHeight": "30px"
+    "hamburgerHeight": "30px",
+    "content": [
+        {
+            "id": "home",
+            "path": "/",
+            "target": "_top"
+        },
+        {
+            "id": "settings",
+            "path": "/settings",
+            "target": "_top"
+        }
+    ]
 }

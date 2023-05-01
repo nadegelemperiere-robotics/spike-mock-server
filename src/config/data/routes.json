@@ -4,11 +4,19 @@
         "element": "Home"
     },
     {
+        "path": "/home",
+        "element": "Home"
+    },
+    {
         "path": "*",
         "element": "NotFound"
     },
     {
         "path": "/loading",
         "element": "Loading"
+    },
+    {
+        "path": "/settings",
+        "element": "Settings"
     }
 ]

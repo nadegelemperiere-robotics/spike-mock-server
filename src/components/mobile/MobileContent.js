@@ -1,10 +1,8 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Desktop content frame definition (not to be visible !)
+# Mobile content frame definition (not to be visible !)
 # -------------------------------------------------------
 # Nadège LEMPERIERE, @02 february 2022
 # Latest revision: 02 february 2022

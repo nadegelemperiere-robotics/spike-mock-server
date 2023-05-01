@@ -1,20 +1,19 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Theme provider
+# Scenario provider with
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
+
 
 /* React includes */
 import React from 'react';
 
 /* Local includes */
-import MatContext from './Context';
+import ScenarioContext from './Context';
 
 function withContainer(Component) {
 
@@ -22,9 +21,9 @@ function withContainer(Component) {
 
         /* eslint-disable react/jsx-props-no-spreading */
         return (
-            <MatContext.Consumer>
+            <ScenarioContext.Consumer>
                 {(contextProps) => (<Component {...contextProps} {...props} />) }
-            </MatContext.Consumer>
+            </ScenarioContext.Consumer>
         );
         /* eslint-enable react/jsx-props-no-spreading */
 

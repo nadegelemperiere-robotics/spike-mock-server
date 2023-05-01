@@ -1,7 +1,5 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Navigation typography styling
@@ -15,8 +13,9 @@ import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
 const NavigationTypography = styled(Typography)(({ col }) => ({
+
     color: col,
-    fontSize: '1.5rem',
+    fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '3',
 

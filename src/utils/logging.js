@@ -1,16 +1,14 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Logging management utils
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
-const showComponents = ['Home', 'HomeCode', 'App', 'Layout', 'HomeRobot', 'RobotProvider', 'MatProvider'];
+const showComponents = ['Error', 'Home', 'App', 'Layout', 'Settings'];
 /*const showComponents = ['all'];*/
 
 /* eslint-disable no-console */
@@ -40,7 +38,6 @@ const logMessage = (component, message, level = 'info') => {
             );
 
         }
-
 
     }
 

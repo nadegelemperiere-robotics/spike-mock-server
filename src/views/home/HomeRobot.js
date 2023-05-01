@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Robot part of Home page
+# Home robot container
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2021
-# Latest revision: 02 february 2021
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -19,12 +17,11 @@ import { useTheme } from '@mui/material/styles';
 
 /* Website includes */
 import { useRobot } from '../../providers';
-import { Image } from '../../components';
+import { Image, PartLightMatrix, PartSpeaker, PartColorSensor, PartMotor, PartForceSensor, PartDistanceSensor, PartStatusLight, PartButton } from '../../components';
 import logMessage from '../../utils/logging';
 
 /* Local includes */
 import { HomeGridItem } from './HomeContainers';
-import { HomePartLightMatrix, HomePartSpeaker, HomePartColorSensor, HomePartMotor, HomePartForceSensor, HomePartDistanceSensor, HomePartStatusLight, HomePartButton } from './HomeParts';
 
 function HomeRobot() {
 
@@ -42,7 +39,6 @@ function HomeRobot() {
     const buttonHorizontalMargin = `calc((100% - 48px) * 810 / 1000 + 24px)`
     const speakerWidth = `calc((100% - 48px) * 120 / 1000)`
     const componentName = 'HomeRobot';
-    console.log(hub)
 
     const components_up = [{},{},{}]
     const components_down = [{},{},{}]
@@ -92,7 +88,7 @@ function HomeRobot() {
             },
             body: "",
         })
-            .catch((err) => { logMessage(componentName, err.message); });
+            .catch((err) => { console.log(err.message); });
         logMessage(componentName, 'handleStopClick --- END');
 
     }
@@ -108,7 +104,7 @@ function HomeRobot() {
             },
             body: "toto",
         })
-            .catch((err) => { logMessage(componentName, err.message); });
+            .catch((err) => { console.log(err.message); });
         logMessage(componentName, 'handleButtonClick --- END');
 
     }
@@ -124,7 +120,7 @@ function HomeRobot() {
             },
             body: "toto",
         })
-            .catch((err) => { logMessage(componentName, err.message); });
+            .catch((err) => { console.log(err.message); });
         logMessage(componentName, 'handleButtonRelease --- END');
 
     }
@@ -141,10 +137,10 @@ function HomeRobot() {
 
                                 return(
                                     <Container key={item.port} style={{ width:'100%', paddingLeft: '0px', paddingRight: '0px' }}>
-                                        {(item.type === 'ColorSensor') && ( <HomePartColorSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'ForceSensor') && ( <HomePartForceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'Motor') && ( <HomePartMotor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'DistanceSensor') && ( <HomePartDistanceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'ColorSensor') && ( <PartColorSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'ForceSensor') && ( <PartForceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'Motor') && ( <PartMotor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'DistanceSensor') && ( <PartDistanceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
                                     </Container>
                                 )
 
@@ -154,7 +150,7 @@ function HomeRobot() {
                     <Container style={{ position:'relative', top: '10px', width: '100%', right: '0%' }}>
                         <Image reference="hub" style={{ zIndex: '0', width: '100%', objectFit: 'contain', overflow: 'hidden', backgroundColor: '#ffffff' }} />
                         <Container style={{ position: 'absolute', zIndex: '1', margin:'0', top: hubVerticalMargin, left: statusLightHorizontalMargin, width: statusLightWidth, height: hubHeight, right: 0, padding: '0', bottom:hubVerticalMargin }}>
-                            <HomePartStatusLight height='20%' width='100%' top='50%' color={hub.statuslight.color} on={hub.statuslight.on}/>
+                            {('statuslight' in hub) && (<PartStatusLight height='20%' width='100%' top='50%' color={hub.statuslight.color} on={hub.statuslight.on}/>)}
                         </Container>
                         <Container style={{ position: 'absolute', zIndex: '1', margin:'0', top: hubVerticalMargin, left: lightMatrixHorizontalMargin, width: lightMatrixWidth, height: hubHeight, right: lightMatrixHorizontalMargin, padding: '0', bottom:hubVerticalMargin }}>
                             <Stack direction="column" alignItems="center" style={{ marginBottom: '0px', marginTop: '0px', height:'100%', bottom:'0px' }}>
@@ -167,7 +163,7 @@ function HomeRobot() {
                                                 let is_on = 0
                                                 if (hub.lightmatrix && hub.lightmatrix[jtem][4 - item]) { is_on = 1}
                                                 return(
-                                                    <HomePartLightMatrix theme={theme} on={is_on} width='20%' height='100%'/>
+                                                    <PartLightMatrix theme={theme} on={is_on} width='20%' height='100%'/>
                                                 )
 
                                             })}
@@ -179,9 +175,9 @@ function HomeRobot() {
                         </Container>
                         <Container style={{ position: 'absolute', zIndex: '1', margin:'0', top: hubVerticalMargin, left: buttonHorizontalMargin, width: buttonWidth, height: hubHeight, right: buttonHorizontalMargin, padding: '0', bottom:hubVerticalMargin }}>
                             <Stack direction="column" alignItems="center" justifyContent="space-between" style={{ marginBottom: '0px', marginTop: '0px', height:'100%', bottom:'0px' }}>
-                                <HomePartButton onClick={handleButtonClick('right')} onRelease={handleButtonRelease('right')} is_pressed={hub.buttons[1].pressed}/>
+                                {('buttons' in hub) && (<PartButton onClick={handleButtonClick('right')} onRelease={handleButtonRelease('right')} is_pressed={hub.buttons[1].pressed}/>)}
                                 <ButtonBase onClick={handleStopClick} style={{ width:'100%', height:'100%' }}></ButtonBase>
-                                <HomePartButton onClick={handleButtonClick('left')} onRelease={handleButtonRelease('left')} is_pressed={hub.buttons[0].pressed}/>
+                                {('buttons' in hub) && (<PartButton onClick={handleButtonClick('left')} onRelease={handleButtonRelease('left')} is_pressed={hub.buttons[0].pressed}/>)}
                             </Stack>
                         </Container>
                     </Container>
@@ -191,10 +187,10 @@ function HomeRobot() {
 
                                 return(
                                     <Container key={item.port} style={{ width:'100%', paddingLeft: '0px', paddingRight: '0px' }}>
-                                        {(item.type === 'ColorSensor') && ( <HomePartColorSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'ForceSensor') && ( <HomePartForceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'Motor') && ( <HomePartMotor size="40" color={item.color} align={item.align} text={item.text}/>)}
-                                        {(item.type === 'DistanceSensor') && ( <HomePartDistanceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'ColorSensor') && ( <PartColorSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'ForceSensor') && ( <PartForceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'Motor') && ( <PartMotor size="40" color={item.color} align={item.align} text={item.text}/>)}
+                                        {(item.type === 'DistanceSensor') && ( <PartDistanceSensor size="40" color={item.color} align={item.align} text={item.text}/>)}
                                     </Container>
                                 );
 
@@ -204,7 +200,7 @@ function HomeRobot() {
                 </Stack>
                 <Container style={{ margin:0, width:speakerWidth, padding:0, bottom:0}}>
                     <Container style={{ position:'relative', margin:0, top: `calc(50% - 24px)`, left: 0, width: '100%', padding: 0 }}>
-                        <HomePartSpeaker color={theme.palette.secondary.main} size='24px' on={hub.speaker.beeping} note={hub.speaker.note} volume={hub.speaker.volume}/>
+                        {('speaker' in hub) && (<PartSpeaker color={theme.palette.secondary.main} size='24px' on={hub.speaker.beeping} note={hub.speaker.note} volume={hub.speaker.volume}/>)}
                     </Container>
                 </Container>
             </Stack>

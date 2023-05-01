@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
 # Home page
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2021
-# Latest revision: 02 february 2021
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -23,7 +21,6 @@ import { useConfig } from '../../providers';
 
 /* Local includes */
 import { HomeGridContainer } from './HomeContainers';
-
 import HomeMat from './HomeMat';
 import HomeRobot from './HomeRobot';
 import HomeCode from './HomeCode';

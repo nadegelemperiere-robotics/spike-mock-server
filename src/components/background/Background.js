@@ -1,10 +1,8 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Home button styling
+# Background with image component
 # -------------------------------------------------------
 # Nadège LEMPERIERE, @02 february 2022
 # Latest revision: 02 february 2022

@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Theme provider
+# Code provider
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -15,6 +13,7 @@ import React, { useReducer, useEffect, useMemo } from 'react';
 
 /* Website includes */
 import logMessage from '../../utils/logging';
+import { useScenario } from '../../providers';
 
 /* Local includes */
 import CodeContext from './Context';
@@ -24,7 +23,8 @@ import reducer from './store/reducer';
 function Provider(props) {
 
     /* --------- Gather inputs --------- */
-    const { period, children, persistKey = 'code' } = props;
+    const { children, persistKey = 'code' } = props;
+    const { refresh } = useScenario();
     const componentName = 'CodeProvider';
 
     const savedState = JSON.parse(localStorage.getItem(persistKey));
@@ -37,25 +37,23 @@ function Provider(props) {
     /* ----- Manage console retrieval ------ */
     useEffect(() => {
 
-        logMessage(componentName, 'useEffect[codeState, period] --- BEGIN');
+        logMessage(componentName, 'useEffect[codeState, refresh] --- BEGIN');
         /* eslint-disable padded-blocks, brace-style */
         function getStatus() {
 
             fetch('v1/command/console')
                 .then((response) => response.json())
                 .then((data) => dispatch(setError(data.console !== null ? data.console : codeState.error)))
-                .catch((err) => {
-                    logMessage(componentName, err.message);
-                });
+                .catch((err) => { console.log(err.message); });
         }
-        const interval = setInterval(() => getStatus(), period)
-        logMessage(componentName, 'useEffect[codeState, period] --- END');
+        const interval = setInterval(() => getStatus(), refresh)
+        logMessage(componentName, 'useEffect[codeState, refresh] --- END');
         return () => {
             clearInterval(interval);
         }
         /* eslint-disable padded-blocks, brace-style */
 
-    }, [codeState, period]);
+    }, [codeState, refresh]);
 
     useEffect(() => {
 

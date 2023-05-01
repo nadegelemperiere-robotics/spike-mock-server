@@ -1,3 +1,116 @@
 {
-    "period": 10000
+    "refresh": 1000,
+    "robot"    : {
+        "design" : {
+            "filename" : "/robot.ldr",
+            "ldu"      : 0.04
+        },
+        "abaqus"     : {
+            "filename" : "abaqus.xlsx"
+        },
+        "components" : [
+            {
+                "type"      : "ColorSensor",
+                "id"        : "37308C01",
+                "port"      : "A",
+                "index"     : 0
+            },
+            {
+                "type"      : "ForceSensor",
+                "id"        : "37312C01",
+                "port"      : "B",
+                "index"     : 0
+            },
+            {
+                "type"      : "DistanceSensor",
+                "id"        : "37316C01",
+                "port"      : "C",
+                "index"     : 0
+            },
+            {
+                "type"      : "Motor",
+                "id"        : "54696",
+                "port"      : "D",
+                "index"     : 0
+            },
+            {
+                "type"      : "Motor",
+                "id"        : "54675",
+                "port"      : "E",
+                "index"     : 0
+            },
+            {
+                "type"      : "Motor",
+                "id"        : "54675",
+                "port"      : "F",
+                "index"     : 1
+            },
+            {
+                "type"      : "Wheel",
+                "id"        : "39367PB01",
+                "port"      : "E",
+                "spin"      : 1,
+                "index"     : 0
+            },
+            {
+                "type"      : "Wheel",
+                "id"        : "39367PB01",
+                "port"      : "F",
+                "spin"      : 1,
+                "index"     : 1
+            }
+        ]
+    },
+    "dynamics" :    {
+        "coordinates" : {
+            "north" : 0,
+            "east"  : 0,
+            "yaw"   : 0
+        }
+    },
+    "time" :    {
+        "mode" : "realtime"
+    },
+    "mats": [
+        {
+            "name": "Superpowered",
+            "image": "/superpowered.png",
+            "scale": 0.112,
+            "origin" :
+            {
+                "x" : 227,
+                "y" : 1077
+            }
+        },
+        {
+            "name": "Cargo Connect",
+            "image": "/cargoconnect.png",
+            "scale": 0.250,
+            "origin" :
+            {
+                "x" : 170,
+                "y" : 480
+            }
+        },
+        {
+            "name": "Replay",
+            "image": "/replay.png",
+            "scale": 0.136,
+            "origin" :
+            {
+                "x" : 314,
+                "y" : 877
+            }
+        },
+        {
+            "name": "City Shaper",
+            "image": "/cityshaper.png",
+            "scale": 0.154,
+            "origin" :
+            {
+                "x" : 192,
+                "y" : 779
+            }
+        }
+    ]
 }

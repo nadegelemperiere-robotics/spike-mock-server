@@ -1,13 +1,11 @@
-/* -------------------------------------------------------
-# TECHNOGIX
-# -------------------------------------------------------
-# Copyright (c) [2022] Technogix SARL
+/* ------------------------------------------------------
+# Copyright (c) [2023] Nadege LEMPERIERE
 # All rights reserved
 # -------------------------------------------------------
-# Layout container
+# Layout for the global application
 # -------------------------------------------------------
-# Nadège LEMPERIERE, @02 february 2022
-# Latest revision: 02 february 2022
+# Nadège LEMPERIERE, @01 may 2023
+# Latest revision: 01 may 2023
 # -------------------------------------------------------*/
 
 /* React includes */
@@ -15,7 +13,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 /* Website includes */
-import { OnlineProvider, MatProvider, RobotProvider, CodeProvider, useConfig, useMenu } from '../../providers';
+import { OnlineProvider, RobotProvider, ScenarioProvider, CodeProvider, useConfig, useMenu } from '../../providers';
 import { Mobile, Desktop } from '../../components';
 import logMessage from '../../utils/logging';
 import Loading from '../../views/loading/Loading';
@@ -37,7 +35,6 @@ function LayoutMode() {
         logMessage(componentName, 'useEffect[isDesktop] --- END');
 
     }, [isDesktop]); /* eslint-disable-line react-hooks/exhaustive-deps */
-
 
     /* ----------- Define HTML --------- */
     return (
@@ -73,20 +70,18 @@ function Layout() {
 
     /* --------- Gather inputs --------- */
     const { appConfig } = useConfig();
-    const { scenario } = appConfig || {};
-    const { period } = scenario || {};
     //const componentName = 'Layout';
 
     /* ----------- Define HTML --------- */
     return (
         <OnlineProvider>
-            <RobotProvider period={period}>
-                <MatProvider period={period}>
-                    <CodeProvider period={period}>
+            <ScenarioProvider appConfig={appConfig}>
+                <RobotProvider appConfig={appConfig}>
+                    <CodeProvider appConfig={appConfig}>
                         <LayoutContent appConfig={appConfig} />
                     </CodeProvider>
-                </MatProvider>
-            </RobotProvider>
+                </RobotProvider>
+            </ScenarioProvider>
         </OnlineProvider>
     );
 

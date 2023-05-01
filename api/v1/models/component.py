@@ -17,7 +17,7 @@ from api.v1.models.pose import pose, marshall_pose
 component = api.model('Component', {
     'type': fields.String(required=True, description='Component type'),
     'port': fields.String(required=True, description='Component port'),
-    'pose': fields.Nested(pose, required=True, description='Component relative position and orientation'),
+    'pose': fields.Nested(pose, required=True, description='Component position and orientation'),
     'red': fields.Integer(required=False, description='Color sensor red value'),
     'green': fields.Integer(required=False, description='Color sensor green value'),
     'blue': fields.Integer(required=False, description='Color sensor blue value'),

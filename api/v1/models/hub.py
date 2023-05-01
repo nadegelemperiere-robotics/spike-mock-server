@@ -17,7 +17,8 @@ from v1.models.speaker      import speaker, marshall_speaker
 from v1.models.statuslight  import statuslight, marshall_statuslight
 
 hub = api.model('Hub', {
-    'lightmatrix': fields.List(fields.List(fields.Boolean, required=False, description='Hub status light status')),
+    'lightmatrix': fields.List(fields.List(fields.Boolean, required=False,
+                                           description='Hub status light status')),
     'buttons': fields.List(fields.Nested(button, required=False, description='Hub buttons status')),
     'statuslight': fields.Nested(statuslight, required=False, description='Hub statuslight status'),
     'speaker': fields.Nested(speaker, required=False, description='Hub speaker status'),
@@ -39,8 +40,8 @@ def marshall_hub(obj):
 
     if 'buttons' in obj :
         result['buttons'] = []
-        for button in obj['buttons'] :
-            result['buttons'].append(marshall_button(button['side'], button['pressed']))
+        for but in obj['buttons'] :
+            result['buttons'].append(marshall_button(but['side'], but['pressed']))
 
     if 'speaker' in obj :
         result['speaker'] = marshall_speaker(obj['speaker'])

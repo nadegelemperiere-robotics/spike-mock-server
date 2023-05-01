@@ -4,7 +4,6 @@
 
 # System includes
 from sys import path
-from json import loads
 from os.path import dirname, realpath
 path.append(dirname(realpath(__file__)) + '/../')
 
@@ -15,12 +14,12 @@ from flask_restx import fields
 from api.v1.routes.common import api
 
 pose = api.model('Pose', {
-    'tx': fields.Float(readOnly=True, description='The component north position in NED coordinates'),
-    'ty': fields.Float(readOnly=True, description='The component east position in NED coordinates'),
-    'tz': fields.Float(readOnly=True, description='The component down position in NED coordinates'),
-    'rx': fields.Float(readOnly=True, description='The component rotation around the north direction'),
-    'ry': fields.Float(readOnly=True, description='The component rotation around the east direction'),
-    'rz': fields.Float(readOnly=True, description='The component rotation around the down direction'),
+    'tx': fields.Float(readOnly=True, description='The north position in NED coordinates'),
+    'ty': fields.Float(readOnly=True, description='The east position in NED coordinates'),
+    'tz': fields.Float(readOnly=True, description='The down position in NED coordinates'),
+    'rx': fields.Float(readOnly=True, description='The rotation around the north direction'),
+    'ry': fields.Float(readOnly=True, description='The rotation around the east direction'),
+    'rz': fields.Float(readOnly=True, description='The rotation around the down direction'),
 })
 
 def marshall_pose(obj):
@@ -34,7 +33,5 @@ def marshall_pose(obj):
     result['rx'] = str(obj.rotation().X())
     result['ry'] = str(obj.rotation().Y())
     result['rz'] = str(obj.rotation().Z())
-
-    return result
 
     return result
